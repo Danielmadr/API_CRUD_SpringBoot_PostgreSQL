@@ -6,4 +6,11 @@ public class ExceptionDTO {
   public ExceptionDTO(String message) {
     this.message = message;
   }
+
+  @Override
+  public String toString() {
+    return "ExceptionDTO{" +
+           "message='" + message + '\'' +
+           '}';
+  }
 }

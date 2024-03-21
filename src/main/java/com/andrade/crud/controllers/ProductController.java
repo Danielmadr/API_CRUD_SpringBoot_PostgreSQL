@@ -36,7 +36,7 @@ public class ProductController {
   public ResponseEntity updateProduct(@PathVariable String id, @RequestBody @Valid ProductDTO data) {
     Optional<Product> productToBeUpdated = productRepository.findById(id);
     if (productToBeUpdated.isEmpty()) {
-      throw new EntityNotFoundException();
+      throw new EntityNotFoundException("Product with id " + id + " not found");
     }
     productToBeUpdated.get().setName(data.name());
     productToBeUpdated.get().setPrice_in_cents(data.price_in_cents());
@@ -48,7 +48,7 @@ public class ProductController {
   public ResponseEntity deleteProduct(@PathVariable String id) {
     Optional<Product> productToBeDeleted = productRepository.findById(id);
     if (productToBeDeleted.isEmpty()) {
-      throw new EntityNotFoundException();
+      throw new EntityNotFoundException("Product with id " + id + " not found");
     }
     productToBeDeleted.get().setActive(false);
     return ResponseEntity.noContent().build();

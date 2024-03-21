@@ -1,15 +1,17 @@
 package com.andrade.crud.infra;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class RequestsExceptionHandler {
+public class GlobalExceptionHandler {
   @ExceptionHandler(EntityNotFoundException.class)
-  public ResponseEntity treat404(){
-    var exception = new ExceptionDTO("Objeto não encontrado");
-    return ResponseEntity.badRequest().body(exception);
+  public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException ex) {
+    String errorMessage = "Entidade não encontrada: " + ex.getMessage();
+    return new ResponseEntity<>(errorMessage, HttpStatus.NOT_FOUND);
   }
+
 }
