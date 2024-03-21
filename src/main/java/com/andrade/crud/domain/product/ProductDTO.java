@@ -9,7 +9,7 @@ public record ProductDTO(
         @NotNull
         Integer price_in_cents
 ) {
-        public ProductDTO (Product product) {
-            this( product.getName(), product.getPrice_in_cents());
-        }
+  public ProductDTO(Product product) {
+    this(product.getName(), product.getPrice_in_cents());
+  }
 }

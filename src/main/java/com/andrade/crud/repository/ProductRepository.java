@@ -1,5 +1,6 @@
-package com.andrade.crud.domain.product;
+package com.andrade.crud.repository;
 
+import com.andrade.crud.domain.product.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
